@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=4 uid="uid://d0ep6v4jap1iy"]
+
+[ext_resource type="TileSet" uid="uid://b2uqeeruestum" path="res://floors.tres" id="1_lmxn5"]
+
+[node name="Platform" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray("AAABAAAAAAAFAAYAAAAAAAAAAAAFAAYAAAD//wAAAAAFAAYAAAD/////AAAFAAYAAAD+////AAAFAAYAAAABAP//AAAEAAEAAAA=")
+tile_set = ExtResource("1_lmxn5")

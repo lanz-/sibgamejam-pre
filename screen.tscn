@@ -1,0 +1,35 @@
+[gd_scene load_steps=10 format=3 uid="uid://bn0d08mggypl6"]
+
+[ext_resource type="PackedScene" uid="uid://bp2n77tf3asp2" path="res://row_spawner.tscn" id="1_dxcqg"]
+[ext_resource type="Script" path="res://screen.gd" id="1_oby4m"]
+[ext_resource type="PackedScene" uid="uid://b00smnhlimm13" path="res://platforms/platform01.tscn" id="3_msol3"]
+[ext_resource type="PackedScene" uid="uid://b1vbqaldlcixq" path="res://platforms/platform02.tscn" id="4_qiq4a"]
+[ext_resource type="PackedScene" uid="uid://uoor8bhhwh7f" path="res://platforms/platform03.tscn" id="5_ov14d"]
+[ext_resource type="PackedScene" uid="uid://b7ujfw8en38pu" path="res://platforms/platform04.tscn" id="6_uw5o3"]
+[ext_resource type="PackedScene" uid="uid://d0ep6v4jap1iy" path="res://platforms/platform05.tscn" id="7_ostgq"]
+[ext_resource type="PackedScene" uid="uid://bikpcw1jxhexu" path="res://platforms/platform06.tscn" id="8_wa3gy"]
+[ext_resource type="PackedScene" uid="uid://nly4p3fo1qil" path="res://platforms/platform07.tscn" id="9_7pohf"]
+
+[node name="Screen" type="Node2D"]
+script = ExtResource("1_oby4m")
+
+[node name="RowSpawner" parent="." instance=ExtResource("1_dxcqg")]
+position = Vector2(615, 509)
+platform_instances = Array[PackedScene]([ExtResource("3_msol3"), ExtResource("4_qiq4a"), ExtResource("5_ov14d"), ExtResource("6_uw5o3"), ExtResource("7_ostgq"), ExtResource("8_wa3gy"), ExtResource("9_7pohf")])
+
+[node name="RowSpawner2" parent="." instance=ExtResource("1_dxcqg")]
+position = Vector2(857, 309)
+
+[node name="RowSpawner3" parent="." instance=ExtResource("1_dxcqg")]
+position = Vector2(606, 88)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(1152, 0)
+
+[node name="Marker2D3" type="Marker2D" parent="."]
+position = Vector2(0, 648)
+
+[node name="Marker2D4" type="Marker2D" parent="."]
+position = Vector2(1152, 648)

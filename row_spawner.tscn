@@ -1,0 +1,23 @@
+[gd_scene load_steps=7 format=3 uid="uid://bp2n77tf3asp2"]
+
+[ext_resource type="Script" path="res://row_spawner.gd" id="1_3k37h"]
+[ext_resource type="PackedScene" uid="uid://b00smnhlimm13" path="res://platforms/platform01.tscn" id="2_ruxwq"]
+[ext_resource type="PackedScene" uid="uid://b1vbqaldlcixq" path="res://platforms/platform02.tscn" id="3_jwnrh"]
+[ext_resource type="PackedScene" uid="uid://uoor8bhhwh7f" path="res://platforms/platform03.tscn" id="4_w3j6d"]
+[ext_resource type="PackedScene" uid="uid://b7ujfw8en38pu" path="res://platforms/platform04.tscn" id="5_ngxb2"]
+[ext_resource type="PackedScene" uid="uid://d0ep6v4jap1iy" path="res://platforms/platform05.tscn" id="6_xmpxb"]
+
+[node name="RowSpawner" type="Node2D"]
+script = ExtResource("1_3k37h")
+platform_instances = Array[PackedScene]([ExtResource("2_ruxwq"), ExtResource("3_jwnrh"), ExtResource("4_w3j6d"), ExtResource("5_ngxb2"), ExtResource("6_xmpxb")])
+
+[node name="SpawnPoint1" type="Marker2D" parent="."]
+position = Vector2(-520, 0)
+gizmo_extents = 50.0
+
+[node name="SpawnPoint2" type="Marker2D" parent="."]
+gizmo_extents = 50.0
+
+[node name="SpawnPoint3" type="Marker2D" parent="."]
+position = Vector2(520, 0)
+gizmo_extents = 50.0

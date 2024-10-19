@@ -1,0 +1,103 @@
+[gd_scene load_steps=14 format=3 uid="uid://cj8mmpqtl0pkw"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_aauoc"]
+[ext_resource type="Texture2D" uid="uid://dxf1qq7s7on52" path="res://art/character_squarePurple.png" id="1_hau3c"]
+[ext_resource type="Script" path="res://main.gd" id="1_opof3"]
+[ext_resource type="Script" path="res://main_camera.gd" id="3_66xg6"]
+[ext_resource type="Texture2D" uid="uid://bc8od5ldywlyu" path="res://art/item_spear.png" id="3_l5onh"]
+[ext_resource type="Script" path="res://hook.gd" id="3_pwno2"]
+[ext_resource type="PackedScene" uid="uid://bn0d08mggypl6" path="res://screen.tscn" id="7_ryvt6"]
+[ext_resource type="Script" path="res://player_dying.gd" id="8_4lrms"]
+[ext_resource type="PackedScene" uid="uid://dsngjfj2qjtxy" path="res://counter.tscn" id="9_vwago"]
+[ext_resource type="Texture2D" uid="uid://do7x4gar02das" path="res://art/character_roundRed.png" id="10_n6lv0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ib12"]
+size = Vector2(35, 58)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ry3gb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gu08k"]
+size = Vector2(4800, 100)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_opof3")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Counter" parent="UI" instance=ExtResource("9_vwago")]
+
+[node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
+position = Vector2(178, 758)
+collision_mask = 4
+script = ExtResource("1_aauoc")
+
+[node name="MainCamera" type="Node2D" parent="Player"]
+script = ExtResource("3_66xg6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_7ib12")
+
+[node name="Body" type="Sprite2D" parent="Player"]
+texture = ExtResource("1_hau3c")
+
+[node name="HandMarker" type="Marker2D" parent="Player"]
+position = Vector2(20, 0)
+
+[node name="Hook" type="CharacterBody2D" parent="Player"]
+z_index = -1
+position = Vector2(20, 0)
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("3_pwno2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Hook"]
+position = Vector2(40, 0)
+shape = SubResource("CircleShape2D_ry3gb")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/Hook"]
+rotation = 1.57079
+texture = ExtResource("3_l5onh")
+
+[node name="Rope" type="Line2D" parent="Player"]
+z_index = -1
+width = 5.0
+default_color = Color(0.439216, 0.266667, 1, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Screen2" parent="." instance=ExtResource("7_ryvt6")]
+position = Vector2(-440, -250)
+screen_text = "SCREEN 2"
+
+[node name="Screen1" parent="." instance=ExtResource("7_ryvt6")]
+position = Vector2(-440, 420)
+screen_text = "SCREEN 1"
+
+[node name="Screen0" parent="." instance=ExtResource("7_ryvt6")]
+position = Vector2(-440, 1090)
+screen_text = "SCREEN 1"
+
+[node name="Screen3" parent="." instance=ExtResource("7_ryvt6")]
+position = Vector2(-440, -920)
+screen_text = "SCREEN 3"
+
+[node name="PlayerLeaving" type="Area2D" parent="."]
+position = Vector2(125, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerLeaving"]
+shape = SubResource("RectangleShape2D_gu08k")
+
+[node name="PlayerDying" type="Area2D" parent="."]
+position = Vector2(125, 1579)
+script = ExtResource("8_4lrms")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDying"]
+shape = SubResource("RectangleShape2D_gu08k")
+debug_color = Color(0.998324, 0, 0.144935, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerDying"]
+texture_repeat = 3
+texture = ExtResource("10_n6lv0")
+region_enabled = true
+region_rect = Rect2(0, 0, 4800, 128)
